@@ -1,0 +1,24 @@
+.container {
+  max-width: 1500px;
+  margin: 10px;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -20px;
+}
+
+.col-md-4 {
+  flex: 0 0 calc(33.33% - 30px);
+  max-width: calc(33.33% - 30px);
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 calc(100% - 30px);
+    max-width: calc(100% - 30px);
+  }
+}

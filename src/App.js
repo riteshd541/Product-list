@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProductListPage from "./components/ProductListPage/ProductListPage";
+import Navbar from "./Navbar";
+import axios from "axios";
+import ProductDetailView from "./components/ProductDetailView/ProductDetailView";
 
-function App() {
+const App = () => {
+  const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(""); // New state for search
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://fakestoreapi.com/products");
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar onSearch={setSearchQuery} /> {/* Pass setSearchQuery */}
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={<ProductListPage data={data} searchQuery={searchQuery} />}
+          />
+          <Route
+            path="/products/:productId"
+            element={<ProductDetailView data={data} />}
+          />
+        </Routes>
+      </Router>
+    </>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,49 @@
+.product-filter {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #f8f8f8;
+  display: flex; /* Display children in a row */
+  justify-content: center;
+  align-items: center; /* Align children vertically */
+}
+
+.product-filter h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.product-filter div {
+  margin-right: 20px; /* Add some space between inputs */
+}
+
+.product-filter label {
+  display: inline-block;
+  width: 100px;
+  font-weight: bold;
+}
+
+.product-filter select,
+.product-filter input {
+  width: 120px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 10px; /* Add some space between inputs */
+}
+
+.product-filter button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.product-filter button:hover {
+  background-color: #0056b3;
+}
